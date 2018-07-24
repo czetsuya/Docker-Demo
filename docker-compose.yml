@@ -1,0 +1,54 @@
+version: '3'
+services:
+    postgres:
+        image: postgres:10
+        container_name: postgres
+        ports:
+          - "5432:5432"
+        environment:
+            - LC_ALL=C.UTF-8
+            - POSTGRES_DB=terawhars
+            - POSTGRES_USER=terawhars
+            - POSTGRES_PASSWORD=terawhars
+            - POSTGRES_PORT=5432
+        volumes:
+            - $PWD/input_files/import-postgres.sql:/docker-entrypoint-initdb.d/import-postgres.sql
+    adminer:
+        image: adminer
+        container_name: adminer
+        depends_on:
+            - postgres
+        ports:
+            - 8081:8080
+    wildfly:
+        image: terawhars
+        container_name: wildfly
+        build: .
+        ports:
+            - "8080:8080"
+            - "9990:9990"
+        environment:
+            - DB_NAME=terawhars
+            - DB_PASS=terawhars
+            - DB_USER=terawhars
+            - DB_HOST=postgres
+            - DS_NAME=TeraWHARSDS
+            - DB_PORT=5432
+            - JNDI_NAME=java:jboss/datasource/TeraWHARSDS
+        depends_on:
+            - postgres
+        volumes:
+            - $PWD/output_files/logs:/opt/jboss/wildfly/standalone/log
+            - $PWD/TeraWHARS/output_files/terawharsdata:/opt/jboss/wildfly/terawharsdata
+            - jboss-conf:/opt/jboss/wildfly/standalone/configuration
+    weblogs:
+        image: opencell/alpine-tailon
+        container_name: tailon
+        depends_on:
+            - wildfly
+        ports:
+            - 8082:8080
+        volumes:
+            - $PWD/output_files/logs:/logs/
+volumes:
+    jboss-conf: {}

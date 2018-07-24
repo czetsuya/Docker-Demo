@@ -1,0 +1,9 @@
+batch
+
+module add --name=org.postgresql --resources=/tmp/postgresql-42.2.4.jar --dependencies=javax.api,javax.transaction.api
+
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
+
+data-source add --jndi-name=${env.JNDI_NAME} --name=${env.DS_NAME} --connection-url=jdbc:postgresql://${env.DB_HOST}:${env.DB_PORT}/${env.DB_NAME} --driver-name=postgresql --user-name=${env.DB_USER} --password=${env.DB_PASS}
+
+run-batch
