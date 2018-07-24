@@ -13,6 +13,7 @@ services:
             - POSTGRES_PORT=5432
         volumes:
             - $PWD/input_files/import-postgres.sql:/docker-entrypoint-initdb.d/import-postgres.sql
+            - $PWD/output_files/postgres_data:/var/lib/postgresql/data
     adminer:
         image: adminer
         container_name: adminer
@@ -39,8 +40,23 @@ services:
             - postgres
         volumes:
             - $PWD/output_files/logs:/opt/jboss/wildfly/standalone/log
-            - $PWD/TeraWHARS/output_files/terawharsdata:/opt/jboss/wildfly/terawharsdata
+            - $PWD/output_files/terawharsdata:/opt/jboss/wildfly/terawharsdata
             - jboss-conf:/opt/jboss/wildfly/standalone/configuration
+    keycloak:
+        image: jboss/keycloak:4.0.0.Final
+        container_name: keycloak
+        ports:
+            - "8083:8080"
+        environment:
+            - DB_VENDOR=POSTGRES
+            - DB_ADDR=postgres
+            - DB_DATABASE=terawhars
+            - DB_USER=terawhars
+            - DB_PASSWORD=terawhars
+            - KEYCLOAK_USER=admin
+            - KEYCLOAK_PASSWORD=admin
+        depends_on:
+            - postgres
     weblogs:
         image: opencell/alpine-tailon
         container_name: tailon
