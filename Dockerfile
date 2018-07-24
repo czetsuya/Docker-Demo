@@ -3,8 +3,9 @@ FROM jboss/wildfly:13.0.0.Final
 
 LABEL com.terawhars.version="0.0.1-snapshot"
 LABEL author="Edward P. Legaspi"
+LABEL email="czetsuya@gmail.com"
 LABEL vendor1="TeraWHARS"
-LABEL com.terawhars.release-date="2018-07-19"
+LABEL com.terawhars.release-date="2018-07-24"
 
 # Set Postgresql env variables
 ENV DB_HOST postgres
