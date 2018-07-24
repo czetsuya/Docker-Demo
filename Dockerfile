@@ -7,19 +7,18 @@ LABEL vendor1="TeraWHARS"
 LABEL com.terawhars.release-date="2018-07-19"
 
 # Set Postgresql env variables
-ENV DB_HOST localhost
+ENV DB_HOST postgres
 ENV DB_PORT 5432
+ENV DB_NAME terawhars
 ENV DB_USER terawhars
 ENV DB_PASS terawhars
-ENV DB_NAME terawhars
 
 ENV DS_NAME TeraWHARSDS
 ENV JNDI_NAME java:jboss/datasources/TeraWHARSDS
 
 USER root
 
-RUN curl -o /tmp/postgresql-42.2.4.jar https://jdbc.postgresql.org/download/postgresql-42.2.4.jar
-RUN curl -o $JBOSS_HOME/standalone/deployments/javaee6-webapp.war https://github.com/czetsuya/javaee6-docker-web/releases/download/1.0.0/javaee6-webapp.war
+ADD https://jdbc.postgresql.org/download/postgresql-42.2.4.jar /tmp/postgresql-42.2.4.jar
 
 WORKDIR /tmp
 COPY input_files/wildfly-command.sh ./
@@ -29,8 +28,12 @@ RUN chmod +x ./wildfly-command.sh
 RUN ./wildfly-command.sh \
     &&  rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history/
 
-# Set the default command to run on boot
-# This will boot WildFly in the standalone mode and bind to all interface
+# Download and deploy the war file
+ADD https://github.com/czetsuya/javaee6-docker-web/releases/download/1.0.0/javaee6-webapp.war $JBOSS_HOME/standalone/deployments
+
+# Create Wildfly admin user
 RUN $JBOSS_HOME/bin/add-user.sh admin admin --silent
 
+# Set the default command to run on boot
+# This will boot WildFly in the standalone mode and bind to all interface
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]

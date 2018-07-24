@@ -28,13 +28,13 @@ services:
             - "8080:8080"
             - "9990:9990"
         environment:
-            - DB_NAME=terawhars
-            - DB_PASS=terawhars
-            - DB_USER=terawhars
             - DB_HOST=postgres
-            - DS_NAME=TeraWHARSDS
             - DB_PORT=5432
-            - JNDI_NAME=java:jboss/datasource/TeraWHARSDS
+            - DB_NAME=terawhars
+            - DB_USER=terawhars
+            - DB_PASS=terawhars
+            - DS_NAME=TeraWHARSDS
+            - JNDI_NAME=java:jboss/datasources/TeraWHARSDS
         depends_on:
             - postgres
         volumes:

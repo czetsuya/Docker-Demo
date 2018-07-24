@@ -17,7 +17,7 @@ $JBOSS_HOME/bin/$JBOSS_MODE.sh -c $JBOSS_CONFIG &
 echo "==> Waiting..."
 wait_for_wildfly
 
-echo "==> Executing..."
+echo "==> Setup Datasource..."
 $JBOSS_CLI -c --file=`dirname "$0"`/module-install.cli
 
 echo "==> Shutting down WildFly..."
