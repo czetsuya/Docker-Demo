@@ -1,11 +1,10 @@
 
-FROM jboss/wildfly:13.0.0.Final
+FROM jboss/wildfly:17.0.1.Final
 
 LABEL com.terawhars.version="0.0.1-snapshot"
 LABEL author="Edward P. Legaspi"
 LABEL email="czetsuya@gmail.com"
-LABEL vendor1="TeraWHARS"
-LABEL com.terawhars.release-date="2018-07-24"
+LABEL com.terawhars.release-date="2019-08-20"
 
 # Set Postgresql env variables
 ENV DB_HOST postgres
@@ -24,6 +23,7 @@ ADD https://jdbc.postgresql.org/download/postgresql-42.2.4.jar /tmp/postgresql-4
 WORKDIR /tmp
 COPY input_files/wildfly-command.sh ./
 COPY input_files/module-install.cli ./
+# search and replace
 RUN sed -i -e 's/\r$//' ./wildfly-command.sh
 RUN chmod +x ./wildfly-command.sh
 RUN ./wildfly-command.sh \

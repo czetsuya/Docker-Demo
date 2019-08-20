@@ -43,7 +43,7 @@ services:
             - $PWD/output_files/terawharsdata:/opt/jboss/wildfly/terawharsdata
             - jboss-conf:/opt/jboss/wildfly/standalone/configuration
     keycloak:
-        image: jboss/keycloak:4.0.0.Final
+        image: jboss/keycloak:6.0.1.Final
         container_name: keycloak
         ports:
             - "8083:8080"
