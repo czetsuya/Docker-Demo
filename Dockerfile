@@ -1,5 +1,5 @@
 
-FROM jboss/wildfly:17.0.1.Final
+FROM jboss/wildfly:13.0.0.Final
 
 LABEL com.terawhars.version="0.0.1-snapshot"
 LABEL author="Edward P. Legaspi"
