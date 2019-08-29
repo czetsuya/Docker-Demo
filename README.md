@@ -1,10 +1,10 @@
 This project installs:
 
-    - Postgresql
-    - Adminer
-    - Tailon
-    - Wildfly
-    - Keycloak
+ * Postgresql
+ * Adminer
+ * Tailon
+ * Wildfly
+ * Keycloak
 
 It deploys a JavaEE war from Github which access the Postgresql database.
 
@@ -21,15 +21,15 @@ To run:
 
 In your browser you may open the following url:
 
-    - http://localhost:8080/javaee6-webapp
-    - http://localhost:8081 - Adminer
-    - http://localhost:8082 - Tailon
-    - http://localhost:8083 - KeycloakThis project installs:
-    - Postgresql
-    - Adminer
-    - Tailon
-    - Wildfly
-    - Keycloak
+ * http://localhost:8080/javaee6-webapp
+ * http://localhost:8081 - Adminer
+ * http://localhost:8082 - Tailon
+ * http://localhost:8083 - KeycloakThis project installs:
+ * Postgresql
+ * Adminer
+ * Tailon
+ * Wildfly
+ * Keycloak
 
 It deploys a JavaEE war from Github which access the Postgresql database.
 
@@ -46,7 +46,7 @@ To run:
 
 In your browser you may open the following url:
 
-    - http://localhost:8080/javaee6-webapp
-    - http://localhost:8081 - Adminer
-    - http://localhost:8082 - Tailon
-    - http://localhost:8083 - Keycloak
+ * http://localhost:8080/javaee6-webapp
+ * http://localhost:8081 - Adminer
+ * http://localhost:8082 - Tailon
+ * http://localhost:8083 - Keycloak
