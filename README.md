@@ -1,3 +1,9 @@
+# Docker
+
+This project deploys a JavaEE war project into Wildfly running on docker with database, logging tools, db tools and Keycloak.
+
+Note that Keycloak is not connected to Wildfly. If needed Keycloak adapter must be installed on Wildfly with the correct client configuration.
+
 This project installs:
 
  * Postgresql
@@ -8,12 +14,12 @@ This project installs:
 
 It deploys a JavaEE war from Github which access the Postgresql database.
 
-Windows
---
+## Windows
+
 Update the PWD variable value in .env.
 
-Ubuntu
---
+## Ubuntu
+
 Remove the PWD variable, Ubuntu/Linux already provide this variable.
 
 To run: 
@@ -33,12 +39,12 @@ In your browser you may open the following url:
 
 It deploys a JavaEE war from Github which access the Postgresql database.
 
-Windows
---
+## Windows
+
 Update the PWD variable value in .env.
 
-Ubuntu
---
+## Ubuntu
+
 Remove the PWD variable, Ubuntu/Linux already provide this variable.
 
 To run: 
