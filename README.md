@@ -1,4 +1,5 @@
 This project installs:
+
     - Postgresql
     - Adminer
     - Tailon
@@ -19,6 +20,7 @@ To run:
 >docker-compose up --build
 
 In your browser you may open the following url:
+
     - http://localhost:8080/javaee6-webapp
     - http://localhost:8081 - Adminer
     - http://localhost:8082 - Tailon
@@ -43,6 +45,7 @@ To run:
 >docker-compose up --build
 
 In your browser you may open the following url:
+
     - http://localhost:8080/javaee6-webapp
     - http://localhost:8081 - Adminer
     - http://localhost:8082 - Tailon
