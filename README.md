@@ -1,5 +1,3 @@
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S0YXPX)
-
 # Docker
 
 This project deploys a JavaEE war project into Wildfly running on docker with database, logging tools, db tools and Keycloak.
